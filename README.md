@@ -1,7 +1,4 @@
-> ![Logo Kinvo](https://github.com/kinvoapp/kinvo-mobile-test/blob/master/logo.svg)
-
-# Teste para candidatos à vaga de Desenvolvedor C#  
-
+## TDD baseado no Desafio abaixo:
 
 ## Problema:
 
@@ -11,8 +8,6 @@
 * Acima de 2 anos de aplicação: 15% sobre o lucro
 * A aplicação não pode ser igual ou menor que zero
 * A data de resgate não pode ser menor que a data de aplicação
-
-Após terminar seu teste submeta um pull request e aguarde seu feedback.
 
 ### Instruções:
 
@@ -33,12 +28,20 @@ Após terminar seu teste submeta um pull request e aguarde seu feedback.
 * O projeto deve compilar;
 * Os testes devem rodar pelo Test Explorer do VS e via console (dotnet test);
 
+### Solução do Desafio:
 
-* **Importante:** Usamos o mesmo teste para todos os níveis de desenvolvedor, **junior**, **pleno** ou **senior**, mas procuramos adequar nossa exigência na avaliação com cada um desses níveis sem, por exemplo, exigir excelência de quem está começando :-)
+Foram criadas APIs expostas via **Swagger** como interface, é possível aplicar novos investimentos e resgata-los. É possivel acessar ao executar a aplicação e acessar:
+**https://\<URI-APP\>/swagger/index.html**
 
-## Submissão
+As **informações só são validas durante a exceção da aplicação**, como não existe sessão de usuário, decidi utilizar **Entity Framework in Memory** para essa abordagem.
+APIs:
 
-Para iniciar o teste, faça um fork deste repositório, crie uma branch com o seu nome e depois envie-nos o pull request.
-Se você apenas clonar o repositório não vai conseguir fazer push e depois vai ser mais complicado fazer o pull request.
+GET
+* /investimento/Aplicacao/{id} **(Obtem uma aplicação por Id)**
+* /investimento/Aplicacao **(Obtem todas aplicações)**
+* /investimento/Aplicacao/{AplicacaoId}/resgate **(Obtem um resgate especifico de uma aplicação)**
 
-**Sucesso!**
+POST
+* /investimento/Aplicacao **(Cria uma aplicação)**
+* /investimento/Aplicacao/{AplicacaoId}/resgate **(Resgata determinada aplicação)**
+* /investimento/Aplicacao/resgate/disponiveis **(Resgata todas que tem data de aplicação menor que data de resgate)**

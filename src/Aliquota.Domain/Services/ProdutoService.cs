@@ -31,7 +31,7 @@ namespace Aliquota.Domain.Services
         {
             if (!aplicacao.EValida())
             {
-                throw new Exception("");
+                throw new Exception("Valor da aplicação precisa ser maior do que zero.");
             }
 
             return _aplicacaoRepository.Inserir(aplicacao);
@@ -41,7 +41,7 @@ namespace Aliquota.Domain.Services
         {
             if (!aplicacao.PodeResgatar(dataResgate))
             {
-                throw new Exception("");
+                throw new Exception($"Data de resgate deve ser superior a data da aplicação {aplicacao.Data.ToString("dd / MM / yyyy HH: mm:ss")}.");
             }
 
             aplicacao.Resgatar(dataResgate);
